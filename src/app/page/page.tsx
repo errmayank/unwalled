@@ -61,7 +61,7 @@ export default function Page() {
 			return;
 		}
 
-		const $ = cheerio.load(decodeURIComponent(pageDataResponse.htmlContent), {
+		const $ = cheerio.load(pageDataResponse.htmlContent, {
 			decodeEntities: true,
 		});
 		const article = $('#root').find('article').first();
@@ -70,8 +70,8 @@ export default function Page() {
 
 		if (htmlContent) {
 			setPageData({
-				authorName: decodeURIComponent(pageDataResponse.authorName),
-				authorUrl: decodeURIComponent(pageDataResponse.authorUrl),
+				authorName: pageDataResponse.authorName,
+				authorUrl: pageDataResponse.authorUrl,
 				publishedAt: pageDataResponse.publishedAt,
 				htmlContent,
 			});
